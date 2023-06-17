@@ -368,6 +368,7 @@ def allorder(request):
             "item_price" : user.item_price,
             "item_discount" : user.item_discount,
             "item_total" : user.item_total,
+            
 
 
             

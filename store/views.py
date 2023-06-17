@@ -16,6 +16,7 @@ from .models import Product
 from .models import Customer
 
 @api_view(['post'])
+
 def createcus(request):
     data = json.loads(request.body)
 
@@ -37,6 +38,7 @@ def createcus(request):
 
 
 @api_view(['get'])
+
 def logcus(request):
     usersList = Customer.objects.all()
     usersList2 = json.loads(request.body)
@@ -57,6 +59,7 @@ def logcus(request):
     return JsonResponse({'data': data})
 
 @api_view(['get'])
+
 def allcus(request):
     usersList = Customer.objects.all()
  
@@ -76,6 +79,7 @@ def allcus(request):
 
 
 @api_view(['DELETE'])
+
 def deletecus(request):
     data = json.loads(request.body)
     email = data['email']
@@ -85,6 +89,7 @@ def deletecus(request):
     return JsonResponse({'status': 'ok'})
 
 @api_view(['PUT'])
+
 def updatacus(request):
     data = json.loads(request.body)
     email = data['email']
@@ -101,6 +106,7 @@ def updatacus(request):
 
 
 @api_view(['get'])
+
 def logadmin(request):
     usersList = Admin.objects.all()
     usersList2 = json.loads(request.body)
@@ -122,6 +128,7 @@ def logadmin(request):
 
 
 @api_view(['post'])
+
 def createpro(request):
     data = json.loads(request.body)
 
@@ -140,6 +147,7 @@ def createpro(request):
 
 
 @api_view(['get'])
+
 def allpro(request):
     usersList = Product.objects.all()
  
@@ -157,6 +165,7 @@ def allpro(request):
     return JsonResponse({'data': data})
 
 @api_view(['DELETE'])
+
 def deletepro(request):
     data = json.loads(request.body)
     product_name = data['product_name']
@@ -166,6 +175,7 @@ def deletepro(request):
     return JsonResponse({'status': 'ok'})
 
 @api_view(['PUT'])
+
 def updatapro(request):
     data = json.loads(request.body)
     product_name = data['product_name']
@@ -184,6 +194,7 @@ def updatapro(request):
 
 
 @api_view(['post'])
+
 def createcate(request):
     data = json.loads(request.body)
 
@@ -200,6 +211,7 @@ def createcate(request):
     return Response({'status' : 'OK'})
 
 @api_view(['get'])
+
 def allcate(request):
     usersList = Categories.objects.all()
  
@@ -216,6 +228,7 @@ def allcate(request):
 
 
 @api_view(['DELETE'])
+
 def deletecate(request):
     data = json.loads(request.body)
     category_name = data['category_name']
@@ -226,6 +239,7 @@ def deletecate(request):
 
 
 @api_view(['PUT'])
+
 def updatacate(request):
     data = json.loads(request.body)
     category_name = data['category_name']
@@ -281,7 +295,6 @@ def brow(request):
             'description': user.description,
             'price': user.price,
         }
-
         data.append([userData,userData2])
         
     return JsonResponse({'data': data})
@@ -311,6 +324,7 @@ def addcart(request):
             'price': user.price,
 
         }
+
         data.append([userData,userData2])
     order_id = add["order_id"]
     quantity = add['quantity']
@@ -331,6 +345,7 @@ def addcart(request):
 @api_view(['DELETE'])
 def deleteorder(request):
     data = json.loads(request.body)
+
     id = data['id']
     
     Order.objects.filter(id=id).delete()
@@ -351,6 +366,7 @@ def allorder(request):
     for user in usersList :
     
         userData = {
+
             'order_date': user.order_date,
             'total_amount': user.total_amount,
             'payment_status': user.payment_status,
